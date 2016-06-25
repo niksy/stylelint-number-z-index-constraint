@@ -1,0 +1,38 @@
+{
+  "name": "stylelint-number-z-index-constraint",
+  "version": "0.0.0",
+  "description": "Stylelint rule for setting minimum and maximum constraint value for z-index.",
+  "main": "index.js",
+  "author": "Ivan Nikolić <niksy5@gmail.com> (http://ivannikolic.com/)",
+  "license": "MIT",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "eslint {index,test/**/*}.js && node test/index.js"
+  },
+  "dependencies": {
+    "lodash": "^4.13.1",
+    "stylelint": "^6.7.1"
+  },
+  "devDependencies": {
+    "eslint": "^2.13.1",
+    "eslint-config-niksy": "^2.1.0",
+    "stylelint-test-rule-tape": "^0.2.0"
+  },
+  "engines": {
+    "node": ">=4"
+  },
+  "keywords": [
+    "stylelint-plugin",
+    "z-index"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/niksy/stylelint-number-z-index-constraint.git"
+  },
+  "bugs": {
+    "url": "https://github.com/niksy/stylelint-number-z-index-constraint/issues"
+  },
+  "homepage": "https://github.com/niksy/stylelint-number-z-index-constraint#readme"
+}
