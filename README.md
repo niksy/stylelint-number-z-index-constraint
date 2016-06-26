@@ -103,4 +103,4 @@ b { z-index: -8000; }
 MIT © [Ivan Nikolić](http://ivannikolic.com)
 
 [ci]: https://travis-ci.org/niksy/stylelint-number-z-index-constraint
-[ci-img]: https://img.shields.io/travis/niksy/stylelint-number-z-index-constraint/master.svg
+[ci-img]: https://img.shields.io/travis/niksy/stylelint-number-z-index-constraint.svg
