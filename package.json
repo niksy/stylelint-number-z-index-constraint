@@ -12,12 +12,15 @@
     "test": "eslint {index,test/**/*}.js && node test/index.js"
   },
   "dependencies": {
-    "lodash": "^4.13.1",
-    "stylelint": "^6.7.1"
+    "lodash": "^4.17.4"
+  },
+  "peerDependencies": {
+    "stylelint": "^7.0.0 || ^8.0.0"
   },
   "devDependencies": {
-    "eslint": "^2.13.1",
-    "eslint-config-niksy": "^2.1.0",
+    "eslint": "^4.7.1",
+    "eslint-config-niksy": "^4.0.6",
+    "stylelint": "^8.1.1",
     "stylelint-test-rule-tape": "^0.2.0"
   },
   "engines": {

@@ -1,7 +1,7 @@
-var test = require('stylelint-test-rule-tape');
+var testRule = require('stylelint-test-rule-tape');
 var fn = require('../');
 
-test(fn.rule, {
+testRule(fn.rule, {
 	ruleName: fn.ruleName,
 	config: {
 		min: 10
@@ -31,7 +31,7 @@ test(fn.rule, {
 	]
 });
 
-test(fn.rule, {
+testRule(fn.rule, {
 	ruleName: fn.ruleName,
 	config: {
 		max: 9999

@@ -4,12 +4,10 @@ var _ = require('lodash');
 var ruleName = 'plugin/number-z-index-constraint';
 
 var messages = stylelint.utils.ruleMessages(ruleName, {
-	largerThanMax: function ( expected ) {
-		return 'Expected z-index to have maximum value of ' + expected + '.';
-	},
-	smallerThanMin: function ( expected ) {
-		return 'Expected z-index to have minimum value of ' + expected + '.';
-	}
+	largerThanMax: ( expected ) =>
+		`Expected z-index to have maximum value of ${expected}.`,
+	smallerThanMin: ( expected ) =>
+		`Expected z-index to have minimum value of ${expected}.`
 });
 
 /**
