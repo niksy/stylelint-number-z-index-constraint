@@ -1,5 +1,6 @@
 {
 	"extends": [
+		"niksy",
 		"niksy/tests"
 	]
 }

@@ -5,10 +5,10 @@ var ruleName = 'plugin/number-z-index-constraint';
 
 var messages = stylelint.utils.ruleMessages(ruleName, {
 	largerThanMax: function ( expected ) {
-		return 'Expected z-index to have maximum value of ' + expected + '.';
+		return `Expected z-index to have maximum value of ${expected}.`;
 	},
 	smallerThanMin: function ( expected ) {
-		return 'Expected z-index to have minimum value of ' + expected + '.';
+		return `Expected z-index to have minimum value of ${expected}.`;
 	}
 });
 
@@ -77,6 +77,5 @@ module.exports = stylelint.createPlugin(ruleName, function ( options ) {
 	};
 
 });
-
 module.exports.ruleName = ruleName;
 module.exports.messages = messages;
