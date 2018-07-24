@@ -1,7 +1,9 @@
-var test = require('stylelint-test-rule-tape');
-var fn = require('../');
+'use strict';
 
-test(fn.rule, {
+const runTest = require('stylelint-test-rule-tape');
+const fn = require('../');
+
+runTest(fn.rule, {
 	ruleName: fn.ruleName,
 	config: {
 		min: 10
@@ -31,7 +33,7 @@ test(fn.rule, {
 	]
 });
 
-test(fn.rule, {
+runTest(fn.rule, {
 	ruleName: fn.ruleName,
 	config: {
 		max: 9999

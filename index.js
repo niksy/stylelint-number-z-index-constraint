@@ -1,15 +1,13 @@
-var stylelint = require('stylelint');
-var _ = require('lodash');
+'use strict';
 
-var ruleName = 'plugin/number-z-index-constraint';
+const stylelint = require('stylelint');
+const _ = require('lodash');
 
-var messages = stylelint.utils.ruleMessages(ruleName, {
-	largerThanMax: function ( expected ) {
-		return `Expected z-index to have maximum value of ${expected}.`;
-	},
-	smallerThanMin: function ( expected ) {
-		return `Expected z-index to have minimum value of ${expected}.`;
-	}
+const ruleName = 'plugin/number-z-index-constraint';
+
+const messages = stylelint.utils.ruleMessages(ruleName, {
+	largerThanMax: ( expected ) => `Expected z-index to have maximum value of ${expected}.`,
+	smallerThanMin: ( expected ) => `Expected z-index to have minimum value of ${expected}.`
 });
 
 /**
@@ -30,51 +28,47 @@ function possibleValueTest ( value ) {
 	return _.isNumber(value) && !isNegative(value);
 }
 
-module.exports = stylelint.createPlugin(ruleName, function ( options ) {
+module.exports = stylelint.createPlugin(ruleName, ( options ) => ( cssRoot, result ) => {
 
-	return function ( cssRoot, result ) {
+	const validOptions = stylelint.utils.validateOptions(result, ruleName, {
+		actual: options,
+		possible: {
+			min: possibleValueTest,
+			max: possibleValueTest
+		}
+	});
 
-		var validOptions = stylelint.utils.validateOptions(result, ruleName, {
-			actual: options,
-			possible: {
-				min: possibleValueTest,
-				max: possibleValueTest
-			}
-		});
+	if ( !validOptions ) {
+		return;
+	}
 
-		if ( !validOptions ) {
+	cssRoot.walkDecls('z-index', ( decl ) => {
+
+		const value = Number(decl.value);
+
+		if ( _.isNaN(value) ) {
 			return;
 		}
 
-		cssRoot.walkDecls('z-index', function ( decl ) {
+		if ( options.max && Math.abs(value) > options.max ) {
+			stylelint.utils.report({
+				ruleName: ruleName,
+				result: result,
+				node: decl,
+				message: messages.largerThanMax(isNegative(value) ? options.max * -1 : options.max)
+			});
+		}
 
-			var value = Number(decl.value);
+		if ( options.min && Math.abs(value) < options.min ) {
+			stylelint.utils.report({
+				ruleName: ruleName,
+				result: result,
+				node: decl,
+				message: messages.smallerThanMin(isNegative(value) ? options.min * -1 : options.min)
+			});
+		}
 
-			if ( _.isNaN(value) ) {
-				return;
-			}
-
-			if ( options.max && Math.abs(value) > options.max ) {
-				stylelint.utils.report({
-					ruleName: ruleName,
-					result: result,
-					node: decl,
-					message: messages.largerThanMax(isNegative(value) ? options.max * -1 : options.max)
-				});
-			}
-
-			if ( options.min && Math.abs(value) < options.min ) {
-				stylelint.utils.report({
-					ruleName: ruleName,
-					result: result,
-					node: decl,
-					message: messages.smallerThanMin(isNegative(value) ? options.min * -1 : options.min)
-				});
-			}
-
-		});
-
-	};
+	});
 
 });
 module.exports.ruleName = ruleName;
