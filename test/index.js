@@ -1,10 +1,10 @@
-'use strict';
+import runTest from 'stylelint-test-rule-tape';
+import fn from '../index';
 
-const runTest = require('stylelint-test-rule-tape');
-const fn = require('../');
+const { rule, ruleName, messages } = fn;
 
-runTest(fn.rule, {
-	ruleName: fn.ruleName,
+runTest(rule, {
+	ruleName: ruleName,
 	config: {
 		min: 10
 	},
@@ -24,17 +24,17 @@ runTest(fn.rule, {
 	reject: [
 		{
 			code: 'a { z-index:9 }',
-			message: fn.messages.smallerThanMin(10)
+			message: messages.smallerThanMin(10)
 		},
 		{
 			code: 'a { z-index:-9 }',
-			message: fn.messages.smallerThanMin(-10)
+			message: messages.smallerThanMin(-10)
 		}
 	]
 });
 
-runTest(fn.rule, {
-	ruleName: fn.ruleName,
+runTest(rule, {
+	ruleName: ruleName,
 	config: {
 		max: 9999
 	},
@@ -54,11 +54,11 @@ runTest(fn.rule, {
 	reject: [
 		{
 			code: 'a { z-index:10000 }',
-			message: fn.messages.largerThanMax(9999)
+			message: messages.largerThanMax(9999)
 		},
 		{
 			code: 'a { z-index:-10000 }',
-			message: fn.messages.largerThanMax(-9999)
+			message: messages.largerThanMax(-9999)
 		}
 	]
 });

@@ -1,7 +1,5 @@
-'use strict';
-
-const stylelint = require('stylelint');
-const _ = require('lodash');
+import stylelint from 'stylelint';
+import _ from 'lodash';
 
 const ruleName = 'plugin/number-z-index-constraint';
 
@@ -28,7 +26,7 @@ function possibleValueTest ( value ) {
 	return _.isNumber(value) && !isNegative(value);
 }
 
-module.exports = stylelint.createPlugin(ruleName, ( options ) => ( cssRoot, result ) => {
+const plugin = stylelint.createPlugin(ruleName, ( options ) => ( cssRoot, result ) => {
 
 	const validOptions = stylelint.utils.validateOptions(result, ruleName, {
 		actual: options,
@@ -71,5 +69,6 @@ module.exports = stylelint.createPlugin(ruleName, ( options ) => ( cssRoot, resu
 	});
 
 });
-module.exports.ruleName = ruleName;
-module.exports.messages = messages;
+plugin.messages = messages;
+
+export default plugin;

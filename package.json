@@ -2,19 +2,24 @@
   "name": "stylelint-number-z-index-constraint",
   "version": "1.0.1",
   "description": "Stylelint rule for setting minimum and maximum constraint value for z-index.",
-  "main": "index.js",
+  "main": "index.cjs.js",
+  "module": "index.esm.js",
   "author": "Ivan Nikolić <niksy5@gmail.com> (http://ivannikolic.com)",
   "license": "MIT",
   "files": [
-    "index.js",
+    "index.cjs.js",
+    "index.esm.js",
     "LICENSE.md",
     "README.md"
   ],
+  "sideEffects": false,
   "directories": {
     "test": "test"
   },
   "scripts": {
-    "test": "eslint '{index,test/**/*}.js' && node test/index.js"
+    "build": "rollup --config .rollup.js",
+    "prepublish": "npm run build",
+    "test": "eslint '{index,test/**/*}.js' && node --require esm test/index.js"
   },
   "dependencies": {
     "lodash": "^4.13.1",
@@ -29,6 +34,8 @@
     "eslint-plugin-node": "^6.0.1",
     "eslint-plugin-promise": "^3.8.0",
     "eslint-plugin-unicorn": "^4.0.3",
+    "esm": "^3.0.51",
+    "rollup": "^0.60.1",
     "stylelint-test-rule-tape": "^0.2.0"
   },
   "engines": {
