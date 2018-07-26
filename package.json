@@ -1,6 +1,6 @@
 {
   "name": "stylelint-number-z-index-constraint",
-  "version": "1.0.1",
+  "version": "2.0.0",
   "description": "Stylelint rule for setting minimum and maximum constraint value for z-index.",
   "main": "index.cjs.js",
   "module": "index.esm.js",
