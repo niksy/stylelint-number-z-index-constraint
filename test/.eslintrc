@@ -1,7 +1,3 @@
 {
-	"extends": [
-		"niksy",
-		"niksy/next",
-		"niksy/tests"
-	]
+	"extends": ["eslint-config-niksy/tests"]
 }

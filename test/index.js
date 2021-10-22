@@ -1,64 +1,92 @@
-import runTest from 'stylelint-test-rule-tape';
-import fn from '../index';
+import function_ from '../index.js';
+import { runCodeTest } from './util/index.js';
 
-const { rule, ruleName, messages } = fn;
+const { ruleName, messages } = function_;
 
-runTest(rule, {
+runCodeTest({
 	ruleName: ruleName,
 	config: {
 		min: 10
 	},
-	skipBasicChecks: true,
 
 	accept: [
 		{
-			code: 'a { z-index:10; }'
+			input: 'a { z-index:10; }',
+			result: []
 		},
 		{
-			code: 'a { z-index:-10; }'
+			input: 'a { z-index:-10; }',
+			result: []
 		},
 		{
-			code: 'a { z-index:auto; }'
+			input: 'a { z-index:auto; }',
+			result: []
 		}
 	],
 	reject: [
 		{
-			code: 'a { z-index:9 }',
-			message: messages.smallerThanMin(10)
+			input: 'a { z-index:9 }',
+			result: [
+				{
+					column: 5,
+					line: 1,
+					text: messages.smallerThanMin(10)
+				}
+			]
 		},
 		{
-			code: 'a { z-index:-9 }',
-			message: messages.smallerThanMin(-10)
+			input: 'a { z-index:-9 }',
+			result: [
+				{
+					column: 5,
+					line: 1,
+					text: messages.smallerThanMin(-10)
+				}
+			]
 		}
 	]
 });
 
-runTest(rule, {
+runCodeTest({
 	ruleName: ruleName,
 	config: {
 		max: 9999
 	},
-	skipBasicChecks: true,
 
 	accept: [
 		{
-			code: 'a { z-index:9999; }'
+			input: 'a { z-index:9999; }',
+			result: []
 		},
 		{
-			code: 'a { z-index:-9999; }'
+			input: 'a { z-index:-9999; }',
+			result: []
 		},
 		{
-			code: 'a { z-index:auto; }'
+			input: 'a { z-index:auto; }',
+			result: []
 		}
 	],
 	reject: [
 		{
-			code: 'a { z-index:10000 }',
-			message: messages.largerThanMax(9999)
+			input: 'a { z-index:10000 }',
+			result: [
+				{
+					column: 5,
+					line: 1,
+					text: messages.largerThanMax(9999)
+				}
+			]
 		},
 		{
-			code: 'a { z-index:-10000 }',
-			message: messages.largerThanMax(-9999)
+			input: 'a { z-index:-10000 }',
+			result: [
+				{
+					column: 5,
+					line: 1,
+					text: messages.largerThanMax(-9999)
+				}
+			]
 		}
 	]
 });

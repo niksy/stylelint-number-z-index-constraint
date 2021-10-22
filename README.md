@@ -31,14 +31,19 @@ Add this config to your `.stylelintrc`:
 ## Details
 
 ```css
-a { z-index: 10; }
+a {
+	z-index: 10;
+}
 /**          ↑
  * This number */
 ```
 
 From [CSS Tricks article](https://css-tricks.com/handling-z-index/):
 
-> It's fairly common to see people number in the hundreds with z-index in web design too. The idea being that you could slip something in between later if need be, which you couldn't if you did 1, 2, 3, etc, because z-index doesn't support decimals.
+> It's fairly common to see people number in the hundreds with z-index in web
+> design too. The idea being that you could slip something in between later if
+> need be, which you couldn't if you did 1, 2, 3, etc, because z-index doesn't
+> support decimals.
 
 This rule also handles negative values.
 
@@ -49,25 +54,41 @@ This rule also handles negative values.
 The following patterns are considered warnings:
 
 ```css
-a { z-index: 9; }
-b { z-index: 2; }
+a {
+	z-index: 9;
+}
+b {
+	z-index: 2;
+}
 ```
 
 ```css
-a { z-index: -9; }
-b { z-index: -2; }
+a {
+	z-index: -9;
+}
+b {
+	z-index: -2;
+}
 ```
 
-The following patterns are *not* considered warnings:
+The following patterns are _not_ considered warnings:
 
 ```css
-a { z-index: 10; }
-b { z-index: 25; }
+a {
+	z-index: 10;
+}
+b {
+	z-index: 25;
+}
 ```
 
 ```css
-a { z-index: 10; }
-b { z-index: -25; }
+a {
+	z-index: 10;
+}
+b {
+	z-index: -25;
+}
 ```
 
 #### `{ max: 9999 }`
@@ -75,25 +96,41 @@ b { z-index: -25; }
 The following patterns are considered warnings:
 
 ```css
-a { z-index: 10000; }
-b { z-index: 200000; }
+a {
+	z-index: 10000;
+}
+b {
+	z-index: 200000;
+}
 ```
 
 ```css
-a { z-index: -10000; }
-b { z-index: -200000; }
+a {
+	z-index: -10000;
+}
+b {
+	z-index: -200000;
+}
 ```
 
-The following patterns are *not* considered warnings:
+The following patterns are _not_ considered warnings:
 
 ```css
-a { z-index: 9999; }
-b { z-index: 8000; }
+a {
+	z-index: 9999;
+}
+b {
+	z-index: 8000;
+}
 ```
 
 ```css
-a { z-index: -9999; }
-b { z-index: -8000; }
+a {
+	z-index: -9999;
+}
+b {
+	z-index: -8000;
+}
 ```
 
 ---
@@ -102,5 +139,9 @@ b { z-index: -8000; }
 
 MIT © [Ivan Nikolić](http://ivannikolic.com)
 
-[ci]: https://travis-ci.org/niksy/stylelint-number-z-index-constraint
-[ci-img]: https://travis-ci.org/niksy/stylelint-number-z-index-constraint.svg?branch=master
+<!-- prettier-ignore-start -->
+
+[ci]: https://github.com/niksy/stylelint-number-z-index-constraint/actions?query=workflow%3ACI
+[ci-img]: https://github.com/niksy/stylelint-number-z-index-constraint/workflows/CI/badge.svg?branch=master
+
+<!-- prettier-ignore-end -->
