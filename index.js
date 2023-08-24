@@ -1,5 +1,11 @@
 import stylelint from 'stylelint';
 
+/**
+ * @typedef {object} Options
+ * @property {number} min
+ * @property {number} max
+ */
+
 const ruleName = 'plugin/number-z-index-constraint';
 
 const messages = stylelint.utils.ruleMessages(ruleName, {
@@ -31,9 +37,11 @@ function possibleValueTest(value) {
 	);
 }
 
-const plugin = stylelint.createPlugin(
-	ruleName,
-	(options) => (cssRoot, result) => {
+/**
+ * @type {stylelint.RuleBase}
+ */
+function ruleFunction(/** @type Options */ options) {
+	return (cssRoot, result) => {
 		const validOptions = stylelint.utils.validateOptions(result, ruleName, {
 			actual: options,
 			possible: possibleValueTest
@@ -72,8 +80,11 @@ const plugin = stylelint.createPlugin(
 				});
 			}
 		});
-	}
-);
+	};
+}
+
+// @ts-ignore
+const plugin = stylelint.createPlugin(ruleName, ruleFunction);
 
 export default {
 	...plugin,

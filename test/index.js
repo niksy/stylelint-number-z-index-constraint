@@ -1,6 +1,7 @@
 import function_ from '../index.js';
 import { runCodeTest } from './util/index.js';
 
+// @ts-ignore
 const { ruleName, messages } = function_;
 
 runCodeTest({
