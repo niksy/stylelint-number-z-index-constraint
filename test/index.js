@@ -30,6 +30,8 @@ runCodeTest({
 				{
 					column: 5,
 					line: 1,
+					endColumn: 14,
+					endLine: 1,
 					text: messages.smallerThanMin(10)
 				}
 			]
@@ -40,6 +42,8 @@ runCodeTest({
 				{
 					column: 5,
 					line: 1,
+					endColumn: 15,
+					endLine: 1,
 					text: messages.smallerThanMin(-10)
 				}
 			]
@@ -74,6 +78,8 @@ runCodeTest({
 				{
 					column: 5,
 					line: 1,
+					endColumn: 18,
+					endLine: 1,
 					text: messages.largerThanMax(9999)
 				}
 			]
@@ -84,6 +90,8 @@ runCodeTest({
 				{
 					column: 5,
 					line: 1,
+					endColumn: 19,
+					endLine: 1,
 					text: messages.largerThanMax(-9999)
 				}
 			]
