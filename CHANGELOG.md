@@ -2,6 +2,8 @@
 
 ## [Unreleased][]
 
+## [3.1.1][] - 2024-02-26
+
 ### Changed
 
 -   Allow Stylelint 16 as peer dependancy
@@ -25,6 +27,11 @@
 [3.0.0]:
 	https://github.com/niksy/stylelint-number-z-index-constraint/tree/v3.0.0
 [Unreleased]:
-	https://github.com/niksy/stylelint-number-z-index-constraint/compare/v3.1.0...HEAD
+	https://github.com/niksy/stylelint-number-z-index-constraint/compare/v3.1.1...HEAD
+[3.1.1]:
+	https://github.com/niksy/stylelint-number-z-index-constraint/tree/v3.1.1
+
+    https://github.com/niksy/stylelint-number-z-index-constraint/compare/v3.1.0...HEAD
+
 [3.1.0]:
 	https://github.com/niksy/stylelint-number-z-index-constraint/tree/v3.1.0
