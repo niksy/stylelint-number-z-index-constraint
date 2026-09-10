@@ -68,7 +68,7 @@ export const runCodeTest = (options) => {
 					}
 				}
 			});
-			const [{ rule, severity, ...warning }] = warnings;
+			const [{ rule, severity, url, fix, ...warning }] = warnings;
 			assert.deepEqual(warning, result[0], 'Expected different warning');
 		});
 	});
